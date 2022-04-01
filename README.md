@@ -7,5 +7,5 @@ This project and setup code is based on a lab created by Adrian Cantrill: Advanc
 
 Please follow the guidance in the Word File submitted as the class project. The links below will contain the specific commands used that can be copied and pasted into the appropriate places in the AWS console as the lab progresses.
 
-- [Stage 1 - VPC](stage1 - setup and manual server.md)
-- [Stage 2 - Launch Template](stage2 - launch template.md)
+- [Stage 1 - VPC](./stage1 - setup and manual server.md)
+- [Stage 2 - Launch Template](./stage2 - launch template.md)
