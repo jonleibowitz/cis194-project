@@ -7,5 +7,10 @@ This project and setup code is based on a lab created by Adrian Cantrill: Advanc
 
 Please follow the guidance in the Word File submitted as the class project. The links below will contain the specific commands used that can be copied and pasted into the appropriate places in the AWS console as the lab progresses.
 
-- [Stage 1 - VPC](./stage1 - setup and manual server.md)
-- [Stage 2 - Launch Template](./stage2 - launch template.md)
+- [Stage 1 - VPC](stage1.md)
+- [Stage 2 - Launch Template](stage2.md)
+- [Stage 3 - RDS](stage3.md)
+- [Stage 4 - EFS](stage4.md)
+- [Stage 5 - ASG and ELB](stage5.md)
+- [Stage 6 - Aurora](stage6.md)
+- [Stage 7 - Cleanup](stage7.md)
