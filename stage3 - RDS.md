@@ -1,3 +1,6 @@
+Populate Environment variables:
+
+
 ```
 DBPassword=$(aws ssm get-parameters --region us-east-1 --names /CIS194/Wordpress/DBPassword --with-decryption --query Parameters[0].Value)
 DBPassword=`echo $DBPassword | sed -e 's/^"//' -e 's/"$//'`
@@ -15,7 +18,7 @@ DBEndpoint=$(aws ssm get-parameters --region us-east-1 --names /CIS194/Wordpress
 DBEndpoint=`echo $DBEndpoint | sed -e 's/^"//' -e 's/"$//'`
 ```
 
-take a backup of the local database
+Take a backup of the local database
 
 ```
 mysqldump -h $DBEndpoint -u $DBUser -p$DBPassword $DBName > cis194WordPress.sql
@@ -46,5 +49,21 @@ Stop MariaDB
 ```
 sudo systemctl disable mariadb
 sudo systemctl stop mariadb
+```
+
+Remove these lines from the User Data section of your modified Launch Template:
+
+```
+systemctl enable mariadb
+systemctl start mariadb
+mysqladmin -u root password $DBRootPassword
+
+
+echo "CREATE DATABASE $DBName;" >> /tmp/db.setup
+echo "CREATE USER '$DBUser'@'localhost' IDENTIFIED BY '$DBPassword';" >> /tmp/db.setup
+echo "GRANT ALL ON $DBName.* TO '$DBUser'@'localhost';" >> /tmp/db.setup
+echo "FLUSH PRIVILEGES;" >> /tmp/db.setup
+mysql -u root --password=$DBRootPassword < /tmp/db.setup
+rm /tmp/db.setup
 ```
 
